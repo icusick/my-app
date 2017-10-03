@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
+import { selectPark } from '../actions/index';
+import { bindActionCreators } from 'redux';
 
 
 
@@ -9,7 +11,9 @@ class ParksIndex extends Component {
     return this.props.parks.map((park) => {
       return (
           <li key={park.name}>
-            {park.name}
+            <Link to={`/parks/${park.name}`} onClick={() => this.props.selectPark(park)}>
+              {park.name}
+            </Link>
           </li>
         )
     })
@@ -19,9 +23,7 @@ class ParksIndex extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-         <h2>National Parks At-A-Glance</h2>
-        </div>
+        <h2>National Parks At-a-Glance</h2>
         <ul>
           {this.renderParksList()}
         </ul>
@@ -36,6 +38,10 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(ParksIndex);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ selectPark: selectPark}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ParksIndex);
 
 
