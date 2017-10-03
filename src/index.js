@@ -1,8 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
 import './index.css';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import ParksIndex from './components/parks_index.js';
+import reducers from './reducers';
+// import registerServiceWorker from './registerServiceWorker';
+
+const createStoreWithMiddleware = applyMiddleware()(createStore);
+
+ReactDOM.render(
+	<Provider store={createStoreWithMiddleware(reducers)}>
+		<ParksIndex />
+	</Provider>
+	, document.getElementById('root'));
+
