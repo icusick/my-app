@@ -32,7 +32,7 @@ class Weather extends Component {
 		return (
 			<div key={name}>
 			<h5>{name}</h5>
-			<div style={{width: 200 , height: 200 }}><GoogleMap lon={lon} lat={lat} /></div>
+			<div><GoogleMap lon={lon} lat={lat} /></div>
 			<h6>Temperature (K)</h6>
 			<div>
 				<Sparklines svgWidth={210} svgHeight={120} data={temps}>
