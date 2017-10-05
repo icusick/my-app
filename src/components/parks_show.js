@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Weather from './park_weather';
+import Weather from '../containers/park-weather';
 
 class ParksShow extends Component {
 	render() {
@@ -11,7 +11,7 @@ class ParksShow extends Component {
 				{this.props.park.location}
 			</div>
 			<div>
-				<Weather name={this.props.park.name}/>
+				<Weather name={this.props.park.name} />
 			</div>
 			</div>
 		);

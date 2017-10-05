@@ -16,7 +16,7 @@ export function selectPark(park) {
 export function getWeather(city) {
 	const url = `${ROOT_URL}&q=${city},us`;
 	const request = axios.get(url);
-	console.log(request)
+	console.log(request);
 
 	return {
 		// type: 'FETCH_WEATHER',
